@@ -13,7 +13,7 @@ public class teste {
 			
 			Scanner scan = new Scanner(System.in);
 			
-			System.out.println("Escolha a questão:");
+			System.out.println("\n\nEscolha a questão:");
 			System.out.println("1 - Questão 1: ");
 			System.out.println("2 - Questão 2: ");
 			System.out.println("3 - Questão 3: ");
@@ -70,6 +70,8 @@ public class teste {
 		System.out.print("Idade: ");
 		pessoa2.setIdade(scan.nextInt());
 		
+		System.out.print("\n");
+		
 		System.out.print(Pessoa.idoso(pessoa1, pessoa2));	
 	}
 	
@@ -92,6 +94,8 @@ public class teste {
 		
 		System.out.print("Salário: ");
 		funcionario2.setSalario(scan.nextDouble());
+		
+		System.out.print("\n");
 		
 		System.out.print("Salário médio: ");
 		System.out.print(Funcionario.media(funcionario1.getSalario(), funcionario2.getSalario()));
@@ -120,7 +124,10 @@ public class teste {
 		
 		
 		System.out.print("Salário bruto: ");
-		funcionario.setSalarioBruto(scan.nextDouble());		
+		funcionario.setSalarioBruto(scan.nextDouble());
+		
+		System.out.print("Imposto: ");
+		funcionario.setImposto(scan.nextDouble());		
 		
 		
 		System.out.printf("\nFuncionário: %s, R$ %.2f\n", funcionario.getNome(), funcionario.salarioLiquido());
@@ -135,6 +142,7 @@ public class teste {
 	
 	public static void questao5() {
 		double alvo = 60;
+		double nota;
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -143,8 +151,11 @@ public class teste {
 		aluno.setNome(scan.next());	
 		
 		
-		System.out.print("Nota do primeiro trimestre: ");
-		aluno.setNota1(scan.nextDouble());
+		do {
+			System.out.print("Nota do primeiro trimestre (até 30 pts): ");
+				nota = scan.nextDouble();
+		} while (nota > 30);
+		aluno.setNota1(nota);
 		
 		System.out.print("Nota do segundo trimestre: ");
 		aluno.setNota2(scan.nextDouble());
@@ -160,7 +171,11 @@ public class teste {
 		System.out.printf("NOTA FINAL = %.2f\n", notaFinal);
 		aluno.setStatus();
 		
+		System.out.print("\n");
+		
 		System.out.print(aluno.getStatus());
+		
+		System.out.print("\n");
 		
 		if(notaFinal < alvo ) {
 			System.out.printf("\nFALTARAM %.2f PONTOS", aluno.notaFaltante(notaFinal));
